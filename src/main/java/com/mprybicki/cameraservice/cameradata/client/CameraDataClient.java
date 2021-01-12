@@ -1,4 +1,4 @@
-package com.mprybicki.cameraservice.cameradata.repository;
+package com.mprybicki.cameraservice.cameradata.client;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;

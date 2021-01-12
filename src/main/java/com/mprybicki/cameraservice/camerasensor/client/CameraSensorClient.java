@@ -1,4 +1,4 @@
-package com.mprybicki.cameraservice.camerasensor.repository;
+package com.mprybicki.cameraservice.camerasensor.client;
 
 import com.mprybicki.cameraservice.common.model.Camera;
 import org.springframework.cloud.openfeign.FeignClient;

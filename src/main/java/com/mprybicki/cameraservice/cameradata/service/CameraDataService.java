@@ -1,6 +1,6 @@
 package com.mprybicki.cameraservice.cameradata.service;
 
-import com.mprybicki.cameraservice.cameradata.repository.CameraDataClient;
+import com.mprybicki.cameraservice.cameradata.client.CameraDataClient;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

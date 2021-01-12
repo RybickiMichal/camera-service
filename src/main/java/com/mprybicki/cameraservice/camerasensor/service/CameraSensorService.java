@@ -1,7 +1,7 @@
 package com.mprybicki.cameraservice.camerasensor.service;
 
 import com.google.gson.Gson;
-import com.mprybicki.cameraservice.camerasensor.repository.CameraSensorClient;
+import com.mprybicki.cameraservice.camerasensor.client.CameraSensorClient;
 import com.mprybicki.cameraservice.camerasensor.repository.CameraSensorRepository;
 import com.mprybicki.cameraservice.common.model.Camera;
 import com.mprybicki.cameraservice.common.model.CameraDTO;
