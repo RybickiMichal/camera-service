@@ -19,5 +19,5 @@ public interface CameraSensorClient {
     Optional<Camera> getSensorWithoutRegisteredService();
 
     @PostMapping("/camera/register-service/{cameraSensorId}/{cameraServicePort}")
-    void registerCameraServiceToCameraSensor(@PathVariable String cameraSensorId, @PathVariable int cameraServicePort);
+    Camera registerCameraServiceToCameraSensor(@PathVariable String cameraSensorId, @PathVariable int cameraServicePort);
 }

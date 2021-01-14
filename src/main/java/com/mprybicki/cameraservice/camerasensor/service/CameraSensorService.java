@@ -55,6 +55,7 @@ public class CameraSensorService {
                     break;
             }
         } else {
+            //TODO update also in scheduler if sensors are not downloaded
             cameraSensorRepository.deleteAll();
             List<Camera> sensors = getActiveCameraSensors();
             log.info("successfully downloaded sensors");

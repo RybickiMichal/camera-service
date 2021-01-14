@@ -26,4 +26,18 @@ public class PanTiltZoom {
     @Min(0)
     @NotNull
     private Double zoom;
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        }
+        if (!(obj instanceof PanTiltZoom)) {
+            return false;
+        }
+        PanTiltZoom panTiltZoom = (PanTiltZoom) obj;
+        return panTiltZoom.getPan().equals(pan)
+                && panTiltZoom.getTilt().equals(tilt)
+                && panTiltZoom.getZoom().equals(zoom);
+    }
 }
