@@ -11,8 +11,7 @@ public class RegistrationScheduler {
 
     private RegistrationService registrationService;
 
-    //TODO move time to properties
-    @Scheduled(fixedRate = 1000 * 20)
+    @Scheduled(fixedRateString = "${scheduler.register.to.new.sensor.fixed.rate}")
     public void registerToNewSensorIfItIsPossible() {
         registrationService.registerToNewSensorIfItIsPossible();
     }

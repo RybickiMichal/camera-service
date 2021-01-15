@@ -11,8 +11,7 @@ public class FetchCameraDataScheduler {
 
     CameraDataService cameraDataService;
 
-    //TODO move time to properties
-    @Scheduled(fixedRate = 2000)
+    @Scheduled(fixedRateString = "${scheduler.fetch.camera.data.fixed.rate}")
     public void actualiseCameraData() {
         cameraDataService.actualiseCamerasData();
     }
