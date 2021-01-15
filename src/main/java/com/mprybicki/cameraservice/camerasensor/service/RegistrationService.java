@@ -19,15 +19,16 @@ public class RegistrationService {
     private CameraSensorRepository cameraSensorRepository;
     private ServerProperties serverProperties;
 
-    public void registerToNewSensorIfItIsPossible() {
+    public boolean registerToNewSensorIfItIsPossible() {
         Optional<Camera> camera = getSensorWithoutRegisteredService();
         if (camera.isPresent()) {
             cameraSensorRepository.save(registerCameraServiceToCameraSensor(camera.get().getId(), serverProperties.getPort()));
             log.info("Registered to new sensor: " + camera.get().toString());
+            return true;
         }
+        return false;
     }
 
-    //TODO write tests
     private Optional<Camera> getSensorWithoutRegisteredService() {
         return cameraSensorClient.getSensorWithoutRegisteredService();
     }
