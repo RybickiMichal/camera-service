@@ -15,7 +15,7 @@ public class CameraData {
 
     @NotNull
     @Valid
-    private PanTiltZoom panTiltZoom;
+    private PositionData positionData;
 
     @NotNull
     private String cameraIp;
@@ -33,6 +33,6 @@ public class CameraData {
         }
         CameraData cameraData = (CameraData) obj;
         return cameraData.cameraIp.equals(cameraIp)
-                && cameraData.panTiltZoom.equals(panTiltZoom);
+                && cameraData.positionData.equals(positionData);
     }
 }

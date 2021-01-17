@@ -27,7 +27,7 @@ public class CameraDataService {
     public void actualiseCamerasData() {
         cameraSensorRepository.findAll().forEach(camera -> {
             if (camera != null && camera.getCameraServicePort().equals(serverProperties.getPort())) {
-                CameraData cameraData = new CameraData(cameraDataClient.getActualPanTiltZoom("http://" + camera.getIp() + "/pan-tilt-zoom"),
+                CameraData cameraData = new CameraData(cameraDataClient.getPositionData("http://" + camera.getIp() + "/position-data"),
                         camera.getIp(), new Date());
                 if (hasCameraDataChanged(cameraData)) {
                     cameraDataRepository.insert(cameraData);
