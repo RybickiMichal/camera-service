@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.web.ServerProperties;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @AllArgsConstructor
@@ -19,7 +20,13 @@ public class RegistrationService {
     private CameraSensorRepository cameraSensorRepository;
     private ServerProperties serverProperties;
 
+    private static boolean AreSensorsNotDownloaded = true;
+
     public boolean registerToNewSensorIfItIsPossible() {
+        if(AreSensorsNotDownloaded) {
+            downloadSensors();
+        }
+
         Optional<Camera> camera = getSensorWithoutRegisteredService();
         if (camera.isPresent()) {
             cameraSensorRepository.save(registerCameraServiceToCameraSensor(camera.get().getId(), serverProperties.getPort()));
@@ -31,6 +38,15 @@ public class RegistrationService {
 
     private Optional<Camera> getSensorWithoutRegisteredService() {
         return cameraSensorClient.getSensorWithoutRegisteredService();
+    }
+
+    private void downloadSensors(){
+        cameraSensorRepository.deleteAll();
+        List<Camera> sensors = cameraSensorClient.getActiveSensors();
+        log.info("successfully downloaded sensors");
+
+        cameraSensorRepository.saveAll(sensors);
+        AreSensorsNotDownloaded = false;
     }
 
     private Camera registerCameraServiceToCameraSensor(String cameraSensorId, int cameraServicePort) {
