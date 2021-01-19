@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.RequestHeader;
 public interface CameraDataClient {
 
     @GetMapping("/position-data")
-    PositionData getPositionData(@RequestHeader("Target") String target, @RequestHeader("Authorization") String token);
+    PositionData getPositionData(@RequestHeader("Target") String target, @RequestHeader("Authorization") String authorizationHeader);
 }
 

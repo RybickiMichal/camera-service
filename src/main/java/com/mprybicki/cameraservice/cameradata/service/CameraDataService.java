@@ -26,10 +26,10 @@ public class CameraDataService {
     private CameraDataRepository cameraDataRepository;
     private ServerProperties serverProperties;
 
-    @Value("${rf.agent.user}")
+    @Value("${camera.service.user}")
     private String user;
 
-    @Value("${rf.agent.password}")
+    @Value("${camera.service.password}")
     private String password;
 
     private static String token;
@@ -43,7 +43,6 @@ public class CameraDataService {
         this.serverProperties = serverProperties;
     }
 
-    //TODO validation for non existing sensors
     public void actualiseCamerasData() {
         cameraSensorRepository.findAll().forEach(camera -> {
             if (camera != null && camera.getCameraServicePort().equals(serverProperties.getPort())) {

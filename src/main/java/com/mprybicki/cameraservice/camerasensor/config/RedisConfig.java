@@ -17,14 +17,11 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 @Configuration
 public class RedisConfig {
 
-    private final String url;
-    private final int port;
+    @Value("${spring.redis.host}")
+    private String url;
 
-    public RedisConfig(@Value("${spring.redis.host}") String url,
-                       @Value("${spring.redis.port}") int port) {
-        this.url = url;
-        this.port = port;
-    }
+    @Value("${spring.redis.port}")
+    private int port;
 
     @Bean
     public RedisStandaloneConfiguration redisStandaloneConfiguration() {

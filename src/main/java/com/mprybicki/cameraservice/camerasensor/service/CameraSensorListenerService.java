@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class CameraSensorListenerService {
 
-    private final CameraSensorService cameraSensorService;
+    private CameraSensorService cameraSensorService;
 
     @KafkaListener(topics = "${kafka.camera.sensor.topic}")
     public void listen(String message) {

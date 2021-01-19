@@ -3,7 +3,6 @@ package com.mprybicki.cameraservice.cameradata.service;
 
 import com.mprybicki.cameraservice.common.model.CameraData;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.SendResult;
@@ -15,11 +14,14 @@ import org.springframework.util.concurrent.ListenableFutureCallback;
 @Slf4j
 public class CameraDataSenderService {
 
-    @Autowired
     private KafkaTemplate<String, CameraData> kafkaTemplate;
 
     @Value("${kafka.camera.data.topic}")
     private String kafkaTopic;
+
+    public CameraDataSenderService(KafkaTemplate<String, CameraData> kafkaTemplate) {
+        this.kafkaTemplate = kafkaTemplate;
+    }
 
     public void send(CameraData cameraData) {
         ListenableFuture<SendResult<String, CameraData>> future = kafkaTemplate.send(kafkaTopic, cameraData);
