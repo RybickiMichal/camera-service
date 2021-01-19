@@ -60,7 +60,7 @@ public class CameraDataService {
                 if (hasCameraDataChanged(cameraData)) {
                     cameraDataRepository.insert(cameraData);
                     cameraDataSenderService.send(cameraData);
-                    log.info("add new camera data " + cameraData.toString());
+                    log.info("Fetched new camera data " + cameraData.toString());
                 }
             }
         });
